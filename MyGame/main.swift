@@ -6,8 +6,12 @@
 //  Copyright © 2018 Syadesign. All rights reserved.
 //
 
-import Foundation
-
-print("Hello, World!")
-print("why")
-
+let myGame = Game(players: 2)
+Game.welcome()
+var choiceName = myGame.teamName()
+let myTeam = Team()
+myTeam.composeATeam()
+var teamCompo = myTeam.teamComposition
+print ("Votre équipe est composée de \(teamCompo)")
+let colosse = Colosse()
+colosse.description()

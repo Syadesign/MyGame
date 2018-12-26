@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+// This class inherits from the characters class
+class Combattant : Characters {
+    
+    init (){
+    super.init (typeOfCharacters: "Combattant", weapon: "épée", lifePoints: 100, attackPoints: 30)
+    }
+}
+

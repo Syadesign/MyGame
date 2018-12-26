@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+// This class inherits from the characters class
+class Colosse : Characters {
+    
+    init (){
+        super.init (typeOfCharacters: "Colosse", weapon: "Marteau", lifePoints: 130, attackPoints: 10)
+    }
+}

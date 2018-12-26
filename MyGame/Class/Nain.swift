@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+
+// This class inherits from the characters class
+class Nain : Characters {
+    
+    init (){
+        super.init (typeOfCharacters: "Nain", weapon: "Hache", lifePoints: 110, attackPoints: 20)
+    }
+}

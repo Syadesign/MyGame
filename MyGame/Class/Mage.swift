@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+
+// This class inherits from the characters class
+class Mage : Characters {
+    
+    init (){
+        super.init (typeOfCharacters: "Mage", weapon: "Potion magique", lifePoints: 130, attackPoints: 0)
+    }
+}
+
+    func heal () {
+    
+    }
