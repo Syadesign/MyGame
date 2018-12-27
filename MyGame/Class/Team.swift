@@ -28,7 +28,7 @@ class Team {
             """)
         
         // Put every new charater in the array teamComposition
-        while teamComposition.count <= Team.maxNumberOfCharacters {
+        while teamComposition.count < Team.maxNumberOfCharacters {
             
             guard let choice = readLine() else {
                 print ("Vous devez choisir 3 personnages")
@@ -36,7 +36,6 @@ class Team {
             }
             
             switch choice {
-                
             case "1":
                 print ("Vous avez choisi le combattant.")
                 teamComposition.append(Combattant())
@@ -50,9 +49,6 @@ class Team {
                 print ("Vous avez choisi le Mage.")
                 teamComposition.append(Mage())
             default: print ("Vous devez choisir 3 personnages pour votre équipe en tapant un chiffre entre 1 et 4.")
-            }
-            while choice != "1" && choice != "2" && choice != "3" && choice != "4" {
-                print ("Vous devez choisir 3 personnages pour votre équipe en tapant un chiffre entre 1 et 4.")
             }
         }
     }

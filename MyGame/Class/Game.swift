@@ -18,25 +18,28 @@ class Game {
         print("Bienvenue à Westeros, où tous les combats se terminent par la mort. Êtes-vous prêts ?")
     }
     
-    func start() {
-        for p in 0..<players {
-            let name = teamName()
-            teams[p].name = name
+    // Choose a team name
+    func teamName() -> String {
+        var choiceName :String?
+        while choiceName == nil || choiceName == "" {
+            print("Choissisez le nom de votre équipe")
+            choiceName = readLine()
+        }
+        print ("Bienvenue équipe \(choiceName!)")
+        return choiceName!
+    }
+    
+    func teamComposition () {
+        for _ in 0..<players {
+            let myTeam = Team()
+            myTeam.name = myGame.teamName()
+            myTeam.composeATeam()
+            print ("Votre équipe est composée de \(myTeam.teamComposition)")
+            teams.append(myTeam)
         }
     }
     
-    // Choose a team name
-    func teamName() -> String {
-        repeat {
-            print("Choissisez le nom de votre équipe")
-            if let choiceName = readLine(){
-                print ("Bienvenue équipe \(choiceName)")
-            }else if choiceName != "" {
-                print ("Vous devez choisir un nom pour votre équipe")
-            }
-            return choiceName
-        } while choiceName != ""
-    }
+    
+    
 }
-
 
