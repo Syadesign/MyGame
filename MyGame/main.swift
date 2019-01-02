@@ -7,5 +7,5 @@
 //
 
 let myGame = Game(players: 2)
-Game.welcome()
-myGame.teamComposition()
+let myTeam = Team()
+myGame.chooseAttacker()
