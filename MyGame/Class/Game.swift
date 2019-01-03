@@ -9,8 +9,6 @@ class Game {
     
     var teams = [Team]()
     
-    
-    
     init(players: Int) {
         self.players = players
     }
@@ -31,45 +29,113 @@ class Game {
         return choiceName!
     }
     
+    // Create our 2 teams with their name and composition of 3 characters
     func teamComposition() {
         for _ in 0..<players {
             let myTeam = Team()
             myTeam.name = myGame.teamName()
             myTeam.composeATeam()
-            print ("Votre équipe est composée de \(myTeam.teamComposition)")
+            print ("""
+                Votre équipe est composée de:
+                1:\(myTeam.heroesName[0]) : \(myTeam.teamComposition[0])
+                2:\(myTeam.heroesName[1]) : \(myTeam.teamComposition[1])
+                3:\(myTeam.heroesName[2]) : \(myTeam.teamComposition[2])
+                """)
             teams.append(myTeam)
         }
     }
     
-    func chooseAttacker() -> Characters? {
-        let myTeam = Team()
-        var myAttacker :Characters?
-        print ("""
-            Choisissez un personnage de votre équipe pour le combat en tapant le numéro correspondant.
-            1: \(myTeam.teamComposition[0])
-            2: \(myTeam.teamComposition[1])
-            3: \(myTeam.teamComposition[2])
-            """)
-        
-        for _ in 0..<myTeam.teamComposition.count {
-            let attacker = readLine()
-            guard attacker == "1" || attacker == "2" || attacker == "3" else {return nil}
-            switch attacker {
-            case "1":
-                print ("Vous avez choisi \(myTeam.teamComposition[0])")
-                myAttacker = myTeam.teamComposition[0]
-            case "2":
-                print ("Vous avez choisi \(myTeam.teamComposition[1]).")
-                myAttacker = myTeam.teamComposition[1]
-            case "3":
-                print ("Vous avez choisi \(myTeam.teamComposition[2])")
-                myAttacker = myTeam.teamComposition[2]
-            default: print ("Error")
-            }
+    // Choose the caracter of you team who will fight
+    func chooseAttacker(from team: Int) ->Characters{
+        var attacker: String?
+        while !["1", "2", "3"].contains(attacker)  {
+            print ("""
+                Choisissez un personnage de votre équipe pour le combat en tapant le numéro correspondant.
+                1:\(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
+                2:\(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
+                3:\(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
+                """)
+            attacker = readLine()
         }
-        return myAttacker!
+        let hero = Int(attacker!)! - 1
+        print ("Vous avez choisi d'envoyer \(teams[team].heroesName[hero]) le \(teams[team].teamComposition[hero]) au combat.")
+        return teams[team].teamComposition[hero]
+        }
+    
+    // Choose the enemy team with the number 1 or 2
+    func chooseTeamEnemy() -> Int {
+        var teamEnemy :String?
+        while ["1","2"].contains(teamEnemy)  {
+            print ("""
+                Choisissez l'équipe à combattre en tapant le numéro correspondant (1 ou 2):
+                """)
+            teamEnemy = readLine()
+        }
+        return Int(teamEnemy!)!
     }
+    
+    // Choose in the enemy's team aigainst who you will fight
+    func chooseEnemy(against team: Int) ->Characters{
+        var enemy: String?
+        while !["1", "2", "3"].contains(enemy) {
+            print ("""
+                Choisissez un personnage à combattre dans l'équipe ennemie:
+                1: \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
+                2: \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
+                3: \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
+                """)
+            enemy = readLine()
+        }
+        let hero = Int(enemy!)! - 1
+        print ("Vous avez choisi d'affronter \(teams[team].heroesName[hero]) le \(teams[team].teamComposition[hero]).")
+        return teams[team].teamComposition[hero]
+    }
+    
+    //Recapitulate life Points of all the caracters
+    func pointsRecap () {
+        for i in 0..<teams.count {
+            print ("""
+                \(teams[i].heroesName[0]) le \(teams[i].teamComposition[0]): \(teams[i].teamComposition[0].lifePoints)
+                \(teams[i].heroesName[1]) le \(teams[i].teamComposition[1]): \(teams[i].teamComposition[1].lifePoints)
+                \(teams[i].heroesName[2]) le \(teams[i].teamComposition[2]): \(teams[i].teamComposition[2].lifePoints)
+                """)
+        }
+    }
+    
+    func characterDescription() {
+        for i in 0..<teams.count {
+            print ("""
+                \(teams[i].heroesName[0]) le \(teams[i].teamComposition[0]):
+                \(teams[i].teamComposition[0].lifePoints)
+                \(teams[i].teamComposition[0].attackPoints)
+                \(teams[i].teamComposition[0].weapon)
+                """)
+        }
+    }
+    
+    func teamDescription() {
+       for i in 0..<teams.count {
+        print ("""
+            \(teams[i].heroesName[0]) le \(teams[i].teamComposition[0]): \(Characters.description(teams[i].teamComposition[0]))
+            \(teams[i].heroesName[1]) le \(teams[i].teamComposition[1]): \(Characters.description(teams[i].teamComposition[0]))
+            \(teams[i].heroesName[2]) le \(teams[i].teamComposition[2]): \(Characters.description(teams[i].teamComposition[0]))
+            """)
+        }
+    }
+    
+    func fight() {
+        for i in 0..<teams.count {
+            let attacker = chooseAttacker(from: i)
+            let teamEnemy = chooseTeamEnemy()
+            let myEnemy = chooseEnemy(against: 1)
+            attacker.attack(against: myEnemy)
+        }
+        
+    }
+    
 }
+
+
 
 
 

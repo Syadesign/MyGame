@@ -15,12 +15,14 @@ class Team {
     var teamComposition = [Characters]()
     
     var name :String = ""
+
+    var heroesName = [String]()
     
     //Choose 3 characters for the team
     func composeATeam ()  {
         
         print("""
-                Choississez 3 personnages parmis les suivants pour composer votre équipe en tapant les numéros correspondants:
+                Choississez 3 personnages parmis les suivants pour composer votre équipe en tapant les numéros correspondants puis choisissez leurs noms:
                 1 - Le combattant --- Arme: Épée --- Points de vie: 100 --- Puissance d'attaque:30
                 2 - Le Colosse --- Arme: Marteau --- Points de vie: 130 --- Puissance d'attaque:10
                 3 - Le Nain --- Arme: Hache --- Points de vie: 110 --- Puissance d'attaque:20
@@ -39,17 +41,35 @@ class Team {
             case "1":
                 print ("Vous avez choisi le combattant.")
                 teamComposition.append(Combattant())
+                characterName()
             case "2":
                 print ("Vous avez choisi le colosse.")
                 teamComposition.append(Colosse())
+                characterName()
             case "3":
                 print ("Vous avez choisi le Nain.")
                 teamComposition.append(Nain())
+                characterName()
             case "4":
                 print ("Vous avez choisi le Mage.")
                 teamComposition.append(Mage())
+                characterName()
             default: print ("Vous devez choisir 3 personnages pour votre équipe en tapant un chiffre entre 1 et 4.")
             }
         }
     }
+    
+    func characterName()  {
+        var choice: String?
+        for _ in 0..<teamComposition.count {
+            while choice == nil || choice == "" {
+                print ("Choisissez le nom de votre personnage")
+                choice = readLine()
+                heroesName.append(choice!)
+            }
+        }
+    }
+    
+    
+    
 }

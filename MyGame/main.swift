@@ -7,5 +7,9 @@
 //
 
 let myGame = Game(players: 2)
-let myTeam = Team()
-myGame.chooseAttacker()
+Game.welcome()
+print ("===================================")
+myGame.teamComposition()
+print ("===================================")
+myGame.characterDescription()
+

@@ -24,7 +24,7 @@ class Characters {
         self.attackPoints = attackPoints
     }
     
-    func description () {
+    func description (){
         print ("""
             Personnage:\(typeOfCharacters)
             Arme: \(weapon)
@@ -33,15 +33,16 @@ class Characters {
             """)
     }
     
-    func attack () {
-        
-        if lifePoints > 0 {
-        } else {
-            print  ("Vous êtes mort, vous ne pouvez plus combattre")
+    func attack ( against: Characters){
+        if self.attackPoints > 0 && self.lifePoints > 0 && against.lifePoints > 0 {
+            against.lifePoints -= self.lifePoints
+        }else{
+            print ("Vous êtes morts, vous ne pouvez plus combattre.")
         }
-        
+        print ("""
+                Points de vie de votre ennemi : \(against.lifePoints) :
+                """)
     }
-    
 }
-    
+
 
