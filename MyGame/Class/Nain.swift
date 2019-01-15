@@ -13,6 +13,6 @@ import Foundation
 class Nain : Characters {
     
     init (){
-        super.init (typeOfCharacters: "Nain", weapon: "Hache", lifePoints: 110, attackPoints: 20)
+        super.init (typeOfCharacters: "Nain", weapon: "Hache", lifePoints: 70, attackPoints: 20)
     }
 }

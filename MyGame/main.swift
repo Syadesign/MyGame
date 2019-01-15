@@ -11,5 +11,4 @@ Game.welcome()
 print ("===================================")
 myGame.teamComposition()
 print ("===================================")
-myGame.characterDescription()
-
+myGame.fight()
