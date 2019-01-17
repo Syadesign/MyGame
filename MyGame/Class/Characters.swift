@@ -8,17 +8,26 @@
 
 import Foundation
 
+/// we enumerate all the weapons the characters can use
 enum Weapon: String {
     case sword
+    case potion
+    case ax
+    case hammer
+    case spear
+    case whip
     
     var attackValue :Int {
         switch self {
         case .sword: return 10
+        case .potion: return 10
+        case .ax: return 12
+        case .hammer: return 15
+        case .spear: return 12
+        case .whip: return 17
         }
-        
     }
 }
-
 
 class Characters {
     var typeOfCharacters: String
@@ -27,7 +36,6 @@ class Characters {
     
     var lifePoints: Int
     
-    
     init (typeOfCharacters: String, weapon: Weapon, lifePoints: Int) {
         self.typeOfCharacters = typeOfCharacters
         self.weapon = weapon
@@ -35,18 +43,22 @@ class Characters {
        
     }
     
-    func description (){
-        print ("Personnage:\(typeOfCharacters) Arme: \(weapon.rawValue) Points de vie: \(lifePoints) Force d'attaque: \(weapon.attackValue)")
+    ///Display all the characteristics of the team members
+    func description() {
+        print("-- Arme: \(weapon.rawValue) -- Points de vie: \(lifePoints)  -- Force d'attaque: \(weapon.attackValue)")
     }
     
-    func attack ( against: Characters){
+    ///Attack method, we take lifepoints to our enemy with our weapon.
+    func attack(against: Characters) {
         if self.weapon.attackValue > 0 && self.lifePoints > 0 && against.lifePoints > 0 {
             against.lifePoints -= self.weapon.attackValue
         }else{
-            print ("Vous êtes morts, vous ne pouvez plus combattre.")
+            print("Vous êtes mort, vous ne pouvez plus combattre.")
         }
-        print ("""
-                Points de vie de votre ennemi : \(against.lifePoints) :
+        print("""
+                =================================================================================================
+                Vous avez bien combattu, il ne reste plus que \(against.lifePoints) points de vie à votre ennemi.
+                =================================================================================================
                 """)
     }
 }
