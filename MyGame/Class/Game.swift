@@ -121,6 +121,14 @@ class Game {
         }
     }
     
+    ///Generate a random number to choose a new weapon
+    func magicBox() -> Weapon {
+        var weapons = [Weapon.spear,Weapon.whip]
+        let randomIndex = Int.random (in: 0..<weapons.count)
+        let randomWeapon = weapons[randomIndex]
+        return randomWeapon
+    }
+    
     func teamDescription() {
         for i in 0..<teams.count {
             for x in 0..<Team.maxNumberOfCharacters{

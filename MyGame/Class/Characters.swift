@@ -14,8 +14,8 @@ enum Weapon: String {
     case potion
     case ax
     case hammer
-    case spear
-    case whip
+    case magicSpear
+    case magicWhip
     
     var attackValue :Int {
         switch self {
@@ -23,8 +23,8 @@ enum Weapon: String {
         case .potion: return 10
         case .ax: return 12
         case .hammer: return 15
-        case .spear: return 12
-        case .whip: return 17
+        case .magicSpear: return 20
+        case .magicWhip: return 25
         }
     }
 }
