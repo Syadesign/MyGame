@@ -8,27 +8,6 @@
 
 import Foundation
 
-/// we enumerate all the weapons the characters can use
-enum Weapon: String {
-    case sword
-    case potion
-    case ax
-    case hammer
-    case magicSpear
-    case magicWhip
-    
-    var attackValue :Int {
-        switch self {
-        case .sword: return 10
-        case .potion: return 10
-        case .ax: return 12
-        case .hammer: return 15
-        case .magicSpear: return 20
-        case .magicWhip: return 25
-        }
-    }
-}
-
 class Characters {
     var typeOfCharacters: String
     
@@ -44,8 +23,8 @@ class Characters {
     }
     
     ///Display all the characteristics of the team members
-    func description() {
-        print("-- Arme: \(weapon.rawValue) -- Points de vie: \(lifePoints)  -- Force d'attaque: \(weapon.attackValue)")
+    var description: String {
+        return "-- Arme: \(weapon.rawValue) -- Points de vie: \(lifePoints)  -- Force d'attaque: \(weapon.attackValue)"
     }
     
     ///Attack method, we take lifepoints to our enemy with our weapon.

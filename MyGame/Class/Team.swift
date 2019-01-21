@@ -14,6 +14,14 @@ class Team {
     
     var teamComposition = [Characters]()
     
+    var points: Int{
+        var somme = 0
+        for i in 0..<teamComposition.count {
+           somme += teamComposition[i].lifePoints
+        }
+        return self.points
+    }
+    
     var name :String = ""
 
     var heroesName = [String]()

@@ -10,7 +10,7 @@ import Foundation
 
 
 // This class inherits from the characters class
-class Mage : Characters {
+class Mage: Characters {
     
     init (){
         super.init (typeOfCharacters: "Mage", weapon: .potion, lifePoints: 60)

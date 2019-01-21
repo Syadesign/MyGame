@@ -78,7 +78,7 @@ class Game {
     }
     
     ///Choose in the enemy's team aigainst who you will fight by writing 1, 2 or 3
-    func chooseEnemy(against : Int) ->Characters {
+    func chooseEnemy(against: Int) ->Characters {
         var enemy: String?
         let team = against - 1
         while !["1", "2", "3"].contains(enemy) {
@@ -97,6 +97,25 @@ class Game {
         return teams[team].teamComposition[hero]
     }
     
+    func chooseTeamMate(with: Int) ->Characters {
+        var teamMate: String?
+        let team = with - 1
+        while !["1", "2", "3"].contains(teamMate) {
+            print("""
+                ==================================================================================================================
+                Choisissez un personnage à soigner dans votre équipe:
+                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
+                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
+                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
+                ==================================================================================================================
+                """)
+            teamMate = readLine()
+        }
+        let hero = Int(teamMate!)! - 1
+        print("<<<<<<<< Vous avez choisi de soigner \(teams[team].heroesName[hero]) le \(teams[team].teamComposition[hero]). >>>>>>>>")
+        return teams[team].teamComposition[hero]
+    }
+    
     ///Recapitulate life Points of all the caracters after every fight
     func pointsRecap() {
         print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POINTS DE VIE RESTANTS DES ÉQUIPES  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
@@ -110,34 +129,52 @@ class Game {
         }
     }
     
-    ///We chose a character in our team to fight and choose our enemy in the other team. After the fight, we have a recap of the life points for all the characters
+    ///We chose a character in our team to fight and choose our enemy in the other team. Then the random box can appear and the attacker change his weapon .After the fight, we have a recap of the life points for all the characters
     func fight() {
         for i in 0..<teams.count {
             let attacker = chooseAttacker(from: i)
-            let teamEnemy = chooseTeamEnemy()
-            let myEnemy = chooseEnemy(against: teamEnemy)
-            attacker.attack(against: myEnemy)
+            if let mage = attacker as? Mage {
+                let teamMate = chooseTeamMate(with: i)
+                mage.heal(healing: teamMate)
+            } else {
+                let teamEnemy = chooseTeamEnemy()
+                teamDescription(team: teamEnemy)
+                let myEnemy = chooseEnemy(against: teamEnemy)
+                randomBox(attacker, team: i)
+                attacker.attack(against: myEnemy)
+            }
             pointsRecap()
         }
     }
     
     ///Generate a random number to choose a new weapon
     func magicBox() -> Weapon {
-        var weapons = [Weapon.spear,Weapon.whip]
+        var weapons = Weapon.magicWeapons
         let randomIndex = Int.random (in: 0..<weapons.count)
         let randomWeapon = weapons[randomIndex]
         return randomWeapon
     }
     
-    func teamDescription() {
-        for i in 0..<teams.count {
-            for x in 0..<Team.maxNumberOfCharacters{
-                print("""
-                    \(teams[i].heroesName[x]) le \(teams[i].teamComposition[x]) : \(teams[i].teamComposition[x].description())
-                    =========================================================================================================
-                    """)
-                
-            }
+    ///Generate a random appearance of the magic box and offer a new magic weapon to the attacker
+    func randomBox(_: Characters, team: Int) {
+        let randomNumber = Int.random (in: 0..<80)
+        if randomNumber > 10 && randomNumber < 23 {
+           chooseAttacker(from: team).weapon = magicBox()
+            print("""
+                **************************************************************************************************************************************************
+                Bravo, vous avez accès au coffre magique et vous équipez de la nouvelle arme \(magicBox()) qui ôte \(magicBox().attackValue) points à son adversaire.
+                **************************************************************************************************************************************************
+                """)
+        }
+        
+    }
+    func teamDescription(team: Int) {
+        let aTeam = team - 1
+        for x in 0..<Team.maxNumberOfCharacters{
+            print("""
+                \(teams[aTeam].heroesName[x]) le \(teams[aTeam].teamComposition[x]) : \(teams[aTeam].teamComposition[x].description)
+                =========================================================================================================
+                """)
         }
     }
 }

@@ -15,6 +15,7 @@
 		049EB34021C7EB48007829F0 /* Nain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB33F21C7EB48007829F0 /* Nain.swift */; };
 		049EB34221C7EBC1007829F0 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB34121C7EBC1007829F0 /* Mage.swift */; };
 		049EB34621C80F9D007829F0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB34521C80F9D007829F0 /* Team.swift */; };
+		04EC9A4821F5F5D2005CF975 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC9A4721F5F5D2005CF975 /* Weapons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		049EB33F21C7EB48007829F0 /* Nain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nain.swift; sourceTree = "<group>"; };
 		049EB34121C7EBC1007829F0 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
 		049EB34521C80F9D007829F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		04EC9A4721F5F5D2005CF975 /* Weapons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				042DF04421C2831C0020BD48 /* Game.swift */,
 				049EB34521C80F9D007829F0 /* Team.swift */,
+				04EC9A4721F5F5D2005CF975 /* Weapons.swift */,
 				044F0F0721C41FD7006A4AD7 /* Characters.swift */,
 				049EB33B21C7B2AD007829F0 /* Combattant.swift */,
 				049EB33D21C7B4B3007829F0 /* Colosse.swift */,
@@ -154,6 +157,7 @@
 				049EB33E21C7B4B3007829F0 /* Colosse.swift in Sources */,
 				049EB34021C7EB48007829F0 /* Nain.swift in Sources */,
 				044F0F0821C41FD7006A4AD7 /* Characters.swift in Sources */,
+				04EC9A4821F5F5D2005CF975 /* Weapons.swift in Sources */,
 				042DF04521C2831C0020BD48 /* Game.swift in Sources */,
 				049EB34221C7EBC1007829F0 /* Mage.swift in Sources */,
 			);
