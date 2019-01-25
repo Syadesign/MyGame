@@ -84,7 +84,7 @@ class Game {
         while !["1", "2", "3"].contains(enemy) {
             print("""
                 ==================================================================================================================
-                Choisissez un personnage à combattre dans l'équipe ennemie:
+                ⚔️ Choisissez un personnage à combattre dans l'équipe ennemie:
                 1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
                 2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
                 3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
@@ -103,7 +103,7 @@ class Game {
         while !["1", "2", "3"].contains(teamMate) {
             print("""
                 ==================================================================================================================
-                Choisissez un personnage à soigner dans votre équipe:
+                🚑 Choisissez un personnage à soigner dans votre équipe:
                 1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
                 2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
                 3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
@@ -118,7 +118,7 @@ class Game {
     
     ///Recapitulate life Points of all the caracters after every fight
     func pointsRecap() {
-        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POINTS DE VIE RESTANTS DES ÉQUIPES  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 🏆 POINTS DE VIE RESTANTS DES ÉQUIPES  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         for i in 0..<teams.count {
             print("""
                 \(teams[i].heroesName[0]) le \(teams[i].teamComposition[0]): \(teams[i].teamComposition[0].lifePoints)
@@ -161,9 +161,16 @@ class Game {
         if randomNumber > 10 && randomNumber < 23 {
            chooseAttacker(from: team).weapon = magicBox()
             print("""
-                **************************************************************************************************************************************************
-                Bravo, vous avez accès au coffre magique et vous équipez de la nouvelle arme \(magicBox()) qui ôte \(magicBox().attackValue) points à son adversaire.
-                **************************************************************************************************************************************************
+                **************************************************************************************************************************
+                🗝 Bravo, vous avez accès au coffre magique et vous équipez de la nouvelle arme \(magicBox()) qui ôte \(magicBox().attackValue) points à son adversaire.
+                **************************************************************************************************************************
+                """)
+        }else if randomNumber > 23 && randomNumber < 30 {
+            chooseAttacker(from: team).lifePoints += 10
+            print("""
+                ...........................................................
+                🍷 Vous avez bu l'elixir de vie et avez récuperé 15 points.
+                ...........................................................
                 """)
         }
         

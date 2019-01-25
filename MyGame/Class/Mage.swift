@@ -16,6 +16,10 @@ class Mage: Characters {
         super.init (typeOfCharacters: "Mage", weapon: .potion, lifePoints: 60)
     }
     
+    override var description: String {
+        return "-- Arme: \(weapon.rawValue) -- Points de vie: \(lifePoints)  -- Force de soin: \(weapon.attackValue)"
+    }
+    
     ///Healing method, only for the mage, who can give lifePoints to his team mate.
     func heal(healing: Characters) {
         if self.weapon.attackValue > 0 && self.lifePoints > 0 && healing.lifePoints > 0 {
@@ -25,7 +29,7 @@ class Mage: Characters {
         }
         print("""
             =================================================================================================
-            Vous avez soigné votre coéquipier, il lui reste desormais \(healing.lifePoints) points de vie.
+            🤕 Vous avez soigné votre coéquipier, il lui reste desormais \(healing.lifePoints) points de vie.
             =================================================================================================
             """)
     }

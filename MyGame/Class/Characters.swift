@@ -36,7 +36,7 @@ class Characters {
         }
         print("""
                 =================================================================================================
-                Vous avez bien combattu, il ne reste plus que \(against.lifePoints) points de vie à votre ennemi.
+                🤺Vous avez bien combattu, il ne reste plus que \(against.lifePoints) points de vie à votre ennemi.
                 =================================================================================================
                 """)
     }

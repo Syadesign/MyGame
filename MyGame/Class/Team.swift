@@ -16,10 +16,10 @@ class Team {
     
     var points: Int{
         var somme = 0
-        for i in 0..<teamComposition.count {
-           somme += teamComposition[i].lifePoints
+        for hero in teamComposition {
+           somme += hero.lifePoints
         }
-        return self.points
+        return somme
     }
     
     var name :String = ""

@@ -7,10 +7,9 @@
 //
 
 let myGame = Game(players: 2)
-let team = myGame.teams
 Game.welcome()
 print ("=============================================== C'EST PARTI ! =============================================== ")
 myGame.teamComposition()
 repeat {
     myGame.fight()
-} while team[0].points > 0 && team[1].points > 0
+} while myGame.teams[0].points > 0 && myGame.teams[1].points > 0
