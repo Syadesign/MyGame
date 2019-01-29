@@ -10,6 +10,11 @@ let myGame = Game(players: 2)
 Game.welcome()
 print ("=============================================== C'EST PARTI ! =============================================== ")
 myGame.teamComposition()
-repeat {
+while myGame.teams[0].points > 0 && myGame.teams[1].points > 0  {
     myGame.fight()
-} while myGame.teams[0].points > 0 && myGame.teams[1].points > 0
+}
+if myGame.teams[0].points <= 0 {
+    print("Bravo équipe \(myGame.teams[1].name), vous avez gagné.")
+} else if myGame.teams[1].points <= 0 {
+    print("Bravo équipe \(myGame.teams[0].name), vous avez gagné.")
+}

@@ -31,6 +31,10 @@ class Characters {
     func attack(against: Characters) {
         if self.weapon.attackValue > 0 && self.lifePoints > 0 && against.lifePoints > 0 {
             against.lifePoints -= self.weapon.attackValue
+            //life points can't be under 0
+            if against.lifePoints < 0 {
+                against.lifePoints = 0
+            }
         }else{
             print("Vous êtes mort, vous ne pouvez plus combattre.")
         }

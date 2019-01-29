@@ -99,21 +99,20 @@ class Game {
     
     func chooseTeamMate(with: Int) ->Characters {
         var teamMate: String?
-        let team = with - 1
         while !["1", "2", "3"].contains(teamMate) {
             print("""
                 ==================================================================================================================
                 🚑 Choisissez un personnage à soigner dans votre équipe:
-                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
-                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
-                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
+                1 - \(teams[with].heroesName[0]) le \(teams[with].teamComposition[0])
+                2 - \(teams[with].heroesName[1]) le \(teams[with].teamComposition[1])
+                3 - \(teams[with].heroesName[2]) le \(teams[with].teamComposition[2])
                 ==================================================================================================================
                 """)
             teamMate = readLine()
         }
         let hero = Int(teamMate!)! - 1
-        print("<<<<<<<< Vous avez choisi de soigner \(teams[team].heroesName[hero]) le \(teams[team].teamComposition[hero]). >>>>>>>>")
-        return teams[team].teamComposition[hero]
+        print("<<<<<<<< Vous avez choisi de soigner \(teams[with].heroesName[hero]) le \(teams[with].teamComposition[hero]). >>>>>>>>")
+        return teams[with].teamComposition[hero]
     }
     
     ///Recapitulate life Points of all the caracters after every fight
@@ -156,17 +155,21 @@ class Game {
     }
     
     ///Generate a random appearance of the magic box and offer a new magic weapon to the attacker
-    func randomBox(_: Characters, team: Int) {
+    func randomBox(_ character: Characters, team: Int) {
+        guard character.lifePoints > 0 else {
+            print ("Votre personnage est mort et ne peut accéder au coffre magique.")
+            return
+        }
         let randomNumber = Int.random (in: 0..<80)
         if randomNumber > 10 && randomNumber < 23 {
-           chooseAttacker(from: team).weapon = magicBox()
+           character.weapon = magicBox()
             print("""
                 **************************************************************************************************************************
                 🗝 Bravo, vous avez accès au coffre magique et vous équipez de la nouvelle arme \(magicBox()) qui ôte \(magicBox().attackValue) points à son adversaire.
                 **************************************************************************************************************************
                 """)
         }else if randomNumber > 23 && randomNumber < 30 {
-            chooseAttacker(from: team).lifePoints += 10
+            character.lifePoints += 10
             print("""
                 ...........................................................
                 🍷 Vous avez bu l'elixir de vie et avez récuperé 15 points.
