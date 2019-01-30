@@ -47,7 +47,7 @@ class Game {
     ///Choose the caracter of your team who will fight
     func chooseAttacker(from team: Int) ->Characters {
         var attacker: String?
-        while !["1", "2", "3"].contains(attacker)  {
+        while !["1", "2", "3"].contains(attacker) {
             print("""
                 ==================================================================================================================
                 Choisissez un personnage de votre équipe pour le combat en tapant le numéro correspondant.
@@ -68,9 +68,9 @@ class Game {
         var teamEnemy :String?
         while !["1","2"].contains(teamEnemy)  {
             print("""
-                ***************************************************************************
-                Choisissez l'équipe à combattre en tapant le numéro correspondant (1 ou 2):
-                ***************************************************************************
+                ***************************************************************************************************************************************
+                Choisissez l'équipe à combattre en tapant le numéro correspondant : 1 pour l'équipe \(teams[0].name) ou 2 pour l'équipe \(teams[1].name)
+                ***************************************************************************************************************************************
                 """)
             teamEnemy = readLine()
         }
@@ -132,6 +132,10 @@ class Game {
     func fight() {
         for i in 0..<teams.count {
             let attacker = chooseAttacker(from: i)
+            guard attacker.lifePoints > 0 else {
+                print ("Votre personnage est mort et ne peut combattre. Choisissez un autre personnage")
+                return
+            }
             if let mage = attacker as? Mage {
                 let teamMate = chooseTeamMate(with: i)
                 mage.heal(healing: teamMate)
