@@ -14,12 +14,12 @@ class Team {
     
     var teamComposition = [Characters]()
     
-    var points: Int{
-        var somme = 0
+    var points: Int {
+        var totalLifePoints = 0
         for hero in teamComposition {
-           somme += hero.lifePoints
+           totalLifePoints += hero.lifePoints
         }
-        return somme
+        return totalLifePoints
     }
     
     var name :String = ""

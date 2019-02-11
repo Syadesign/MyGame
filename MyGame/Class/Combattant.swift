@@ -12,7 +12,7 @@ import Foundation
 class Combattant : Characters {
     
     init (){
-    super.init (typeOfCharacters: "Combattant", weapon: .sword, lifePoints: 10)
+    super.init (typeOfCharacters: "Combattant", weapon: .sword, lifePoints: 100)
     }
 }
 

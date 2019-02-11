@@ -12,6 +12,6 @@ import Foundation
 class Colosse : Characters {
     
     init (){
-        super.init (typeOfCharacters: "Colosse", weapon: .hammer, lifePoints: 10)
+        super.init (typeOfCharacters: "Colosse", weapon: .hammer, lifePoints: 90)
     }
 }

@@ -19,7 +19,6 @@ class Characters {
         self.typeOfCharacters = typeOfCharacters
         self.weapon = weapon
         self.lifePoints = lifePoints
-       
     }
     
     ///Display all the characteristics of the team members
@@ -34,12 +33,14 @@ class Characters {
             //life points can't be under 0
             if against.lifePoints < 0 {
                 against.lifePoints = 0
-            }
-            print("""
+                print ("Votre ennemi est mort.")
+            }else {
+                print("""
                 =================================================================================================
                 🤺Vous avez bien combattu, il ne reste plus que \(against.lifePoints) points de vie à votre ennemi.
                 =================================================================================================
                 """)
+            }
         }else{
             print("Vous êtes mort, vous ne pouvez plus combattre.")
         }
