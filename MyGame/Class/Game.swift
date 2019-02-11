@@ -51,16 +51,21 @@ class Game {
             print("""
                 ==================================================================================================================
                 Choisissez un personnage de votre équipe pour le combat en tapant le numéro correspondant.
-                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0])
-                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1])
-                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2])
+                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0]): 🏆 \(teams[team].teamComposition[0].lifePoints)
+                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1]): 🏆 \(teams[team].teamComposition[1].lifePoints)
+                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2]): 🏆 \(teams[team].teamComposition[2].lifePoints)
                 ==================================================================================================================
                 """)
             attacker = readLine()
         }
         let hero = Int(attacker!)! - 1
+        let choice = teams[team].teamComposition[hero]
+        if choice.lifePoints <= 0 {
+            print ("Vous avez choisi un personnage mort, veuillez en choisir un autre.")
+            return chooseAttacker(from: team)
+        }
         print("<<<<<<<< Vous avez choisi d'envoyer \(teams[team].heroesName[hero]) le \(teams[team].teamComposition[hero]) au combat. >>>>>>>>")
-        return teams[team].teamComposition[hero]
+        return choice
     }
     
     ///Choose the enemy team with the number 1 or 2 (1= Index 0 in tab teams, 2= Index 1)
@@ -68,9 +73,9 @@ class Game {
         var teamEnemy :String?
         while !["1","2"].contains(teamEnemy)  {
             print("""
-                ***************************************************************************************************************************************
+                ************************************************************************************************************
                 Choisissez l'équipe à combattre en tapant le numéro correspondant : 1 pour l'équipe \(teams[0].name) ou 2 pour l'équipe \(teams[1].name)
-                ***************************************************************************************************************************************
+                ************************************************************************************************************
                 """)
             teamEnemy = readLine()
         }
@@ -97,6 +102,7 @@ class Game {
         return teams[team].teamComposition[hero]
     }
     
+    /// Only for the mage, choose a team mate to heal him and give him life points
     func chooseTeamMate(with: Int) ->Characters {
         var teamMate: String?
         while !["1", "2", "3"].contains(teamMate) {
@@ -131,11 +137,11 @@ class Game {
     ///We chose a character in our team to fight and choose our enemy in the other team. Then the random box can appear and the attacker change his weapon .After the fight, we have a recap of the life points for all the characters
     func fight() {
         for i in 0..<teams.count {
-            let attacker = chooseAttacker(from: i)
-            guard attacker.lifePoints > 0 else {
-                print ("Votre personnage est mort et ne peut combattre. Choisissez un autre personnage")
+            guard teams[i].points > 0 else{
+                print ("Vous avez perdu, votre équipe est morte.")
                 return
             }
+            let attacker = chooseAttacker(from: i)
             if let mage = attacker as? Mage {
                 let teamMate = chooseTeamMate(with: i)
                 mage.heal(healing: teamMate)
@@ -180,14 +186,14 @@ class Game {
                 ...........................................................
                 """)
         }
-        
     }
+    
+    /// Describe the characteristics of all the team's members
     func teamDescription(team: Int) {
         let aTeam = team - 1
         for x in 0..<Team.maxNumberOfCharacters{
             print("""
-                \(teams[aTeam].heroesName[x]) le \(teams[aTeam].teamComposition[x]) : \(teams[aTeam].teamComposition[x].description)
-                =========================================================================================================
+                🔸\(teams[aTeam].heroesName[x]) le \(teams[aTeam].teamComposition[x]) : \(teams[aTeam].teamComposition[x].description)
                 """)
         }
     }
