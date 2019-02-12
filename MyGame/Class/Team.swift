@@ -10,10 +10,13 @@ import Foundation
 
 class Team {
     
+    // Max number of characters in each team
     static let maxNumberOfCharacters = 3
     
+    // Characters of each team
     var teamComposition = [Characters]()
     
+    //Total of team's life points
     var points: Int {
         var totalLifePoints = 0
         for hero in teamComposition {
@@ -22,8 +25,10 @@ class Team {
         return totalLifePoints
     }
     
+    // Team name chosen in the method teamName in class Game
     var name :String = ""
-
+    
+    // Storage of the characters name chosen in the method characterName
     var heroesName = [String]()
     
     ///Choose 3 characters for the team

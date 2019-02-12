@@ -9,10 +9,13 @@
 import Foundation
 
 class Characters {
+    // The character can be a "commbattant", "colosse", "nain" or "mage".
     var typeOfCharacters: String
     
+    // Every character has his own weapon whith an attack value.
     var weapon: Weapon
     
+    // If the life points is at 0 or under, the character is dead.
     var lifePoints: Int
     
     init (typeOfCharacters: String, weapon: Weapon, lifePoints: Int) {

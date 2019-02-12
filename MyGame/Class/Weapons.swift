@@ -18,6 +18,7 @@ enum Weapon: String, CaseIterable{
     case magicWhip
     case magicMace
     
+    // Each weapon take a number of life points to his enemy
     var attackValue :Int {
         switch self {
         case .sword: return 10
@@ -29,5 +30,7 @@ enum Weapon: String, CaseIterable{
         case .magicMace: return 30
         }
     }
+    
+    // The magic weapons appear randomly in the magic box
     static var magicWeapons: [Weapon] = [.magicMace, .magicWhip, .magicSpear]
 }

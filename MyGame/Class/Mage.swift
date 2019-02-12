@@ -16,6 +16,7 @@ class Mage: Characters {
         super.init (typeOfCharacters: "Mage", weapon: .potion, lifePoints: 60)
     }
     
+    //The message give the "force de soin" in the place of "force d'attaque".
     override var description: String {
         return "-- Arme: \(weapon.rawValue) -- Points de vie: \(lifePoints)  -- Force de soin: \(weapon.attackValue)"
     }

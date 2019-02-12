@@ -4,6 +4,7 @@ class Game {
     //Number of players
     let players: Int
     
+    // This property store the 2 teams 
     var teams = [Team]()
     
     init(players: Int) {
@@ -178,6 +179,7 @@ class Game {
                 🗝 Bravo, vous avez accès au coffre magique et vous équipez de la nouvelle arme \(magicBox()) qui ôte \(magicBox().attackValue) points à son adversaire.
                 **************************************************************************************************************************
                 """)
+        // Generate a random appearance of a magic elixir who give 10 life points to the fighter
         }else if randomNumber > 23 && randomNumber < 30 {
             character.lifePoints += 10
             print("""
