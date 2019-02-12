@@ -31,9 +31,9 @@ class Characters {
         if self.weapon.attackValue > 0 && self.lifePoints > 0 && against.lifePoints > 0 {
             against.lifePoints -= self.weapon.attackValue
             //life points can't be under 0
-            if against.lifePoints < 0 {
+            if against.lifePoints <= 0 {
                 against.lifePoints = 0
-                print ("Votre ennemi est mort.")
+            print ("Votre ennemi est mort.")
             }else {
                 print("""
                 =================================================================================================
