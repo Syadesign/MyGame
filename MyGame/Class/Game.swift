@@ -36,9 +36,9 @@ class Game {
             print("""
                 ********************************************************
                 Votre équipe est composée de:
-                1 - \(myTeam.heroesName[0]) : \(myTeam.teamComposition[0]) 
-                2 - \(myTeam.heroesName[1]) : \(myTeam.teamComposition[1])
-                3 - \(myTeam.heroesName[2]) : \(myTeam.teamComposition[2])
+                1 - \(myTeam.heroesName[0]) : \(myTeam.teamComposition[0].typeOfCharacters)
+                2 - \(myTeam.heroesName[1]) : \(myTeam.teamComposition[1].typeOfCharacters)
+                3 - \(myTeam.heroesName[2]) : \(myTeam.teamComposition[2].typeOfCharacters)
                 ********************************************************
                 """)
             teams.append(myTeam)
@@ -52,9 +52,9 @@ class Game {
             print("""
                 ==================================================================================================================
                 Choisissez un personnage de votre équipe pour le combat en tapant le numéro correspondant.
-                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0]): 🏆 \(teams[team].teamComposition[0].lifePoints)
-                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1]): 🏆 \(teams[team].teamComposition[1].lifePoints)
-                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2]): 🏆 \(teams[team].teamComposition[2].lifePoints)
+                1 - \(teams[team].heroesName[0]) le \(teams[team].teamComposition[0].typeOfCharacters): 🏆 \(teams[team].teamComposition[0].lifePoints)
+                2 - \(teams[team].heroesName[1]) le \(teams[team].teamComposition[1].typeOfCharacters): 🏆 \(teams[team].teamComposition[1].lifePoints)
+                3 - \(teams[team].heroesName[2]) le \(teams[team].teamComposition[2].typeOfCharacters): 🏆 \(teams[team].teamComposition[2].lifePoints)
                 ==================================================================================================================
                 """)
             attacker = readLine()

@@ -13,7 +13,7 @@ import Foundation
 class Mage: Characters {
     
     init (){
-        super.init (typeOfCharacters: "Mage", weapon: .potion, lifePoints: 60)
+        super.init (typeOfCharacters: "Mage", weapon: .potion, lifePoints: 10)
     }
     
     //The message give the "force de soin" in the place of "force d'attaque".

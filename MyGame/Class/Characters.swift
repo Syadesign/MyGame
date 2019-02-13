@@ -10,7 +10,7 @@ import Foundation
 
 class Characters {
     // The character can be a "commbattant", "colosse", "nain" or "mage".
-    var typeOfCharacters: String
+    let typeOfCharacters: String
     
     // Every character has his own weapon whith an attack value.
     var weapon: Weapon

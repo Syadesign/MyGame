@@ -20,7 +20,7 @@ class Team {
     var points: Int {
         var totalLifePoints = 0
         for hero in teamComposition {
-           totalLifePoints += hero.lifePoints
+            totalLifePoints += hero.lifePoints
         }
         return totalLifePoints
     }
@@ -78,11 +78,17 @@ class Team {
     func characterName() {
         var choice: String?
         for _ in 0..<teamComposition.count {
-            while choice == nil || choice == "" {
+            while choice == nil || choice == ""{
                 print("Choisissez le nom de votre personnage")
                 choice = readLine()
-                heroesName.append(choice!)
+                if heroesName.contains(choice!){
+                    print("Vous devez choisir un autre nom, celui-ci est déja pris.")
+                    characterName()
+                } else {
+                    heroesName.append(choice!)
+                }
             }
         }
     }
 }
+
